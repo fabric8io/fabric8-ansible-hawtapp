@@ -3,4 +3,4 @@ app1 ansible_ssh_host=10.10.3.20 ansible_ssh_user=vagrant ansible_ssh_private_ke
 app2 ansible_ssh_host=10.10.3.21 ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/app2/virtualbox/private_key
 
 [winboxes]
-windows1 ansible_ssh_host=localhost ansible_ssh_user=IEUser ansible_ssh_pass=Passw0rd! winrm=true
+windows1 ansible_ssh_host=localhost ansible_port=5985 ansible_ssh_user=IEUser ansible_ssh_pass=Passw0rd! winrm=true
