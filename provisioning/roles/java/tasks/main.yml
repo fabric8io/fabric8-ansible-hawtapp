@@ -1,6 +1,6 @@
 ---
 # Installs the JRE on the machine
-- include: yum.yml
-  when: ansible_os_family == 'Linux'
+- include: linux.yml
+  when: ansible_os_family == 'RedHat'
 - include: windows.yml
   when: ansible_os_family == 'Windows'
