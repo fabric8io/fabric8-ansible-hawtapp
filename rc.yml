@@ -24,3 +24,4 @@ spec:
       - env:
         - name: "GOSUPERVISE_COMMAND"
           value: "/opt/cdi-camel-2.2.98-SNAPSHOT-app/bin/run.sh"
+      serviceAccountName: "fabric8"
