@@ -1,0 +1,22 @@
+---
+# Copies JRE msi package from control machine to provisioned machine
+- name: Copy jre zip to provisioned machine
+  win_copy: src=zulu1.8.0_66-8.11.0.1-win64.zip dest=c:\
+
+- name: Install the Zulu 1.8 JRE
+  win_unzip:
+    src: C:\zulu1.8.0_66-8.11.0.1-win64.zip
+    dest: C:\Program Files
+    creates: C:\Program Files\zulu1.8.0_66-8.11.0.1-win64
+
+- name: Add JRE to the windows PATH env var
+  win_environment:
+    name: PATH
+    value: C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\OpenSSH\bin;C:\Program Files\zulu1.8.0_66-8.11.0.1-win64\bin
+    level: machine
+
+- name: Set the JAVA_HOME env var
+  win_environment:
+    name: JAVA_HOME
+    value: C:\Program Files\zulu1.8.0_66-8.11.0.1-win64
+    level: machine

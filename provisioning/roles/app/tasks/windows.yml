@@ -1,0 +1,40 @@
+---
+# # Creates App user and group in the system
+# - name: Create App user
+#   user: name={{ app_owner }} createhome=no home={{ app_home }} shell=/sbin/nologin state=present
+# vars:
+#   app_home: C:\opt\{{ app_name }}-{{ app_version }}{{ app_classifier }}
+
+- name: Copy tar.exe to provisioned machine
+  win_copy: src=tar.exe dest=c:\
+
+# Checks whether App home directory already exists
+- name: Check if App is already installed
+  win_stat: path={{ app_home }}
+  register: app_installed
+
+# Download App package
+- name: Download App
+  win_get_url: url={{ app_url }} dest=c:/{{ app_package }}
+  when: not app_installed.stat.exists
+
+- name: Create the C:\opt 
+  win_file: path=C:\opt state=directory
+  when: not app_installed.stat.exists
+
+# # Extracts App package to its home directory
+- name: Extract App package to {{ app_home }}
+  raw: c:\\tar -C c:\\opt -xvf c:\\{{ app_package }}
+  when: not app_installed.stat.exists
+
+# # Changes ownership of App home directory to the user recursively
+# - name: Change {{ app_home }} directory owner and group to the app owner and group
+#   file: path={{ app_home }} state=directory owner={{ app_owner }} group={{ app_group }} recurse=yes
+
+# Creates service script for App
+#- name: Create App service script
+#  copy: src={{ app_home }}/bin/run.sh dest=/etc/init.d/{{ app_name }} owner=root group=root mode=644 backup=yes
+
+# Starts App service and enables start on bootup
+#- name: Start App
+#  service: name={{ app_name }} state=started enabled=yes
