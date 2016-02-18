@@ -12,21 +12,18 @@
 
 # Download App package
 - name: Download App
-  win_get_url: url={{ app_url }} dest=c:/{{ app_package }}
-  when: not app_installed.stat.exists
-
-- name: Copy tar.exe to provisioned machine
-  win_copy: src=tar.exe dest=c:\
+  win_get_url: url={{ app_url }} dest=c:\{{ app_package }}
   when: not app_installed.stat.exists
 
 - name: Create the C:\opt 
-  win_file: path=C:\opt state=directory
+  win_file: path=c:\opt state=directory
   when: not app_installed.stat.exists
 
 # # Extracts App package to its home directory
 - name: Extract App package to {{ app_home }}
-  raw: c:\tar -C c:\opt -xvf c:\{{ app_package }}
+  win_unzip: src=c:\{{ app_package }} dest=C:\opt
   when: not app_installed.stat.exists
+
 
 # # Changes ownership of App home directory to the user recursively
 # - name: Change {{ app_home }} directory owner and group to the app owner and group
