@@ -14,7 +14,14 @@ app_classifier: '-app'
 app_home: '/opt/{{ app_name }}-{{ app_version }}{{ app_classifier }}'
 
 # App version
-app_version: '2.2.98-SNAPSHOT'
+app_version: '2.2.99-SNAPSHOT'
 
 # Port on which web applications are served on appservers
 app_port: 8080
+
+# App tgz file name
+app_package: '{{ app_name }}-{{ app_version }}{{ app_classifier }}.zip'
+
+# TODO dirty hack for now!!
+app_url: 'https://oss.sonatype.org/content/repositories/snapshots/io/fabric8/quickstarts/{{ app_name }}/{{ app_version }}/{{ app_name }}-2.2.99-20160219.164602-7{{ app_classifier }}.zip'
+

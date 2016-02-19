@@ -7,7 +7,7 @@
 
 # Checks whether App home directory already exists
 - name: Check if App is already installed
-  win_stat: path={{ app_home }}
+  win_stat: path=c:\opt\cdi-camel-2.2.99-SNAPSHOT-app
   register: app_installed
 
 # Download App package
@@ -23,7 +23,6 @@
 - name: Extract App package to {{ app_home }}
   win_unzip: src=c:\{{ app_package }} dest=C:\opt
   when: not app_installed.stat.exists
-
 
 # # Changes ownership of App home directory to the user recursively
 # - name: Change {{ app_home }} directory owner and group to the app owner and group

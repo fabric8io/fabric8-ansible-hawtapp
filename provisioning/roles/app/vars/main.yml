@@ -1,6 +1,0 @@
----
-# App tgz file name
-app_package: '{{ app_name }}-{{ app_version }}{{ app_classifier }}.zip'
-
-# TODO dirty hack for now!!
-app_url: 'https://oss.sonatype.org/content/repositories/snapshots/io/fabric8/quickstarts/cdi-camel/2.2.99-SNAPSHOT/cdi-camel-2.2.99-20160218.233323-1-app.zip'
