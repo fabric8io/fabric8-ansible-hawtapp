@@ -1,0 +1,17 @@
+---
+apiVersion: "v1"
+kind: "ReplicationController"
+metadata:
+  name: "hawtapp-demo"
+  labels:
+    project: "hawtapp-demo"
+    version: "{{ app_version }}"
+  annotations:
+spec:
+  template:
+    spec:
+      containers:
+      - env:
+        - name: "KANSIBLE_COMMAND"
+          value: "{{ app_home }}/bin/run.sh"
+      #serviceAccountName: "fabric8"
