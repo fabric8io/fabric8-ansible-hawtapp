@@ -14,4 +14,4 @@ spec:
       - env:
         - name: "KANSIBLE_COMMAND"
           value: "{{ app_home }}/bin/run.sh"
-      #serviceAccountName: "fabric8"
+      serviceAccountName: "fabric8"
