@@ -4,17 +4,17 @@
 
 # App name
 app_name: 'cdi-camel'
-
-app_owner: '{{ app_name }}'
-app_group: '{{ app_name }}'
-
 app_classifier: '-app'
+app_version: '2.2.99-SNAPSHOT'
+
+app_package: '{{ app_name }}-{{ app_version }}{{ app_classifier }}.zip'
+app_url: 'https://oss.sonatype.org/content/repositories/snapshots/io/fabric8/quickstarts/{{ app_name }}/{{ app_version }}/{{ app_name }}-2.2.99-20160219.164602-7{{ app_classifier }}.zip'
 
 # App home directory
+app_owner: '{{ app_name }}'
+app_group: '{{ app_name }}'
 app_home: '/opt/{{ app_name }}-{{ app_version }}{{ app_classifier }}'
-
-# App version
-app_version: '2.2.98-SNAPSHOT'
-
 # Port on which web applications are served on appservers
 app_port: 8080
+
+

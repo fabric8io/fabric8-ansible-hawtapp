@@ -1,0 +1,34 @@
+---
+# Creates App user and group in the system
+- name: Create App user
+  user: name={{ app_owner }} createhome=no home={{ app_home }} shell=/sbin/nologin state=present
+  sudo: yes
+
+# Checks whether App home directory already exists
+- name: Check if App is already installed
+  stat: path={{ app_home }}
+  register: app_installed
+
+# Download App package
+- name: Download App
+  get_url: url={{ app_url }} dest={{ ansible_env.HOME }}/{{ app_package }}
+  when: not app_installed.stat.exists
+
+# Extracts App package to its home directory
+- name: Extract App package to {{ app_home }}
+  unarchive: src={{ ansible_env.HOME }}/{{ app_package }} dest=/opt copy=no owner={{ app_owner }} group={{ app_group }}
+  when: not app_installed.stat.exists
+  sudo: yes
+
+# Changes ownership of App home directory to the user recursively
+- name: Change {{ app_home }} directory owner and group to the app owner and group
+  file: path={{ app_home }} state=directory owner={{ app_owner }} group={{ app_group }} recurse=yes
+  sudo: yes
+
+# Creates service script for App
+#- name: Create App service script
+#  copy: src={{ app_home }}/bin/run.sh dest=/etc/init.d/{{ app_name }} owner=root group=root mode=644 backup=yes
+
+# Starts App service and enables start on bootup
+#- name: Start App
+#  service: name={{ app_name }} state=started enabled=yes
