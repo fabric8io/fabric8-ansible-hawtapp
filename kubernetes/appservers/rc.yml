@@ -14,4 +14,9 @@ spec:
       - env:
         - name: "KANSIBLE_COMMAND"
           value: "{{ app_home }}/bin/run.sh"
+        - name: "KANSIBLE_COMMAND_WINRM"
+          value: "c:\\opt\\{{ app_name }}-{{ app_version }}-app\\bin\\run.cmd"
+        ports:
+        - containerPort: 8080
+          name: "http"
       serviceAccountName: "fabric8"

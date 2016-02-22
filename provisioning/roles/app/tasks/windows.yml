@@ -7,7 +7,7 @@
 
 # Checks whether App home directory already exists
 - name: Check if App is already installed
-  win_stat: path=c:\opt\cdi-camel-2.2.99-SNAPSHOT-app
+  win_stat: path=c:\opt\{{ app_name }}-{{ app_version }}-app
   register: app_installed
 
 # Download App package
@@ -15,7 +15,7 @@
   win_get_url: url={{ app_url }} dest=c:\{{ app_package }}
   when: not app_installed.stat.exists
 
-- name: Create the C:\opt 
+- name: Create the C:\opt
   win_file: path=c:\opt state=directory
   when: not app_installed.stat.exists
 
