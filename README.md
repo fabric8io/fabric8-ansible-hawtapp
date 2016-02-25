@@ -11,7 +11,9 @@ We use Ansible to install the Java App on application servers (```appservers``` 
 Required software:
 >
  * *Vagrant* (https://www.vagrantup.com/) **version 1.7.0 or later<sup>1</sup>** - requires any virtualization software (e.g. VirtualBox)
- * *Ansible* (http://ansible.com/) **version 1.9 or later**
+ * *Ansible* (http://ansible.com/) **version 2.0.1.0 or later**
+ * *WinRM* (Windows Remote Management) `pip install pywinrm`
+ * *xmltodict* `pip install xmltodict`
 
 You can download latest version of Vagrant from its homepage. Ansible can be installed using system package manager or ```pip```.
 
