@@ -45,6 +45,8 @@ During the provisioning you will be prompted for Ansible Vault password, type: `
 
 Open your web browser, application is available at ```http://10.10.1.20/8080/```.
 
+You can get the openshift route ```oc get routes``` and use that along with a URL parameter to see the Camel example running e.g.  ```http://hawtapp-demo-default.vagrant.f8/camel/hello?name=james```
+
 - - -
 
 **1**: Since v.1.7.0  Vagrant has started generating separate SSH key for each machine making provisioning process more difficult. In prior version there was only a single key for all of the machines - ```~/.vagrant.d/insecure_private_key```. After v.1.7.0 each machine has its own key located in ```.vagrant/machines/<<machine name>>/virtualbox/private_key```. For further details see: [Using Vagrant and Ansible: Running Ansible Manually](http://docs.ansible.com/guide_vagrant.html#running-ansible-manually)
