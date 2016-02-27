@@ -30,11 +30,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         # Diable firewall so we can access the box on the assigned private network.
         host.vm.provision "shell", inline: 'netsh "advfirewall" "set" "allprofiles" "state" "off"'
         memory = 768 # Windows needs a little more memory than linux.
-      else 
+      else
 
-        host.vm.box = "Centos-6.5-minimal-x86_64-20140116"
-        host.vm.box_url = "https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box"
-        host.vm.provision "shell", inline: "sudo yum -y install python-httplib2" # Required to use 'uri' Ansible module
+        host.vm.box = "jimmidyson/centos-7.1"
+        host.vm.box_version = "= 1.2.6"
+
+        #host.vm.box = "Centos-6.5-minimal-x86_64-20140116"
+        #host.vm.box_url = "https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box"
+        #host.vm.provision "shell", inline: "sudo yum -y install python-httplib2" # Required to use 'uri' Ansible module
 
       end
 
