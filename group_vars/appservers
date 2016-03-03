@@ -4,11 +4,12 @@
 
 # App name
 app_name: 'cdi-camel-jetty'
+app_group_path: 'io/fabric8/quickstarts'
+app_version: '2.2.100'
 app_classifier: '-app'
-app_version: '2.2.100-SNAPSHOT'
 
 app_package: '{{ app_name }}-{{ app_version }}{{ app_classifier }}.zip'
-app_url: 'https://oss.sonatype.org/content/repositories/snapshots/io/fabric8/quickstarts/{{ app_name }}/{{ app_version }}/{{ app_name }}-2.2.100-20160222.163242-2{{ app_classifier }}.zip'
+app_url: 'http://central.maven.org/maven2/{{app_group_path}}/{{ app_name }}/{{ app_version }}/{{ app_name }}-{{ app_version }}{{ app_classifier }}.zip'
 
 # App home directory
 app_owner: '{{ app_name }}'
