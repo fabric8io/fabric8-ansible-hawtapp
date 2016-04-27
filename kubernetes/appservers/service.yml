@@ -5,6 +5,8 @@ metadata:
   name: "hawtapp-demo"
   labels:
     project: "hawtapp-demo"
+  annotations:
+    api.service.kubernetes.io/path: /camel/hello
 spec:
   ports:
   - name: "http"
